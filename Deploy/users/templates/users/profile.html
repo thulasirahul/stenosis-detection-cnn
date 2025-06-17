@@ -1,0 +1,113 @@
+{% extends "users/base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+    <style>
+        /* Background for the entire page */
+        body {
+            background-image: url('https://accurateclinic.com/wp-content/uploads/2016/05/Meditator-1.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Profile Picture Styling */
+        .account-img {
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Styling */
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-control, .form-control-file {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        /* Alert Styling */
+        .alert {
+            border-radius: 5px;
+            padding: 1rem;
+        }
+    </style>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Profile Picture and Avatar Change -->
+                <div class="text-center mb-4">
+                    <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }}" alt="Profile Picture" style="cursor: pointer; width: 150px; height: 150px; object-fit: cover;">
+                    <h4 class="mt-2">{{ user.username }}</h4>
+                </div>
+                {% if user_form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul>
+                            {% for key, value in user_form.errors.items %}
+                                <li><strong>{{ value }}</strong></li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <!-- Form for User Details and Profile -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Username:</label>
+                                        {{ user_form.username }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Email:</label>
+                                        {{ user_form.email }} 
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="{% url 'password_change' %}" class="btn btn-link">Change Password</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Change Avatar:</label>
+                                        {{ profile_form.avatar }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Bio:</label>
+                                        {{ profile_form.bio }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                                <button type="reset" class="btn btn-secondary btn-lg">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

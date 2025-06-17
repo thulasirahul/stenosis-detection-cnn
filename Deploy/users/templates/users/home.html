@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Spinal Stonosis</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="data:image/jpeg;base64,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" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{%static 'css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">Welcome to {{ user.username|default:'Guest' }} </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                   
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    {% if user.is_authenticated %}
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#about" style="color: darkgoldenrod;">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services" style="color: darkgoldenrod;">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'users-profile' %}" style="color: darkgoldenrod;">Profile</a></li>
+                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'model_db' %}" style="color: darkgoldenrod;">Database</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'profile_list' %}" style="color: darkgoldenrod;">Profile_Database</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout_view' %}" style="color: darkgoldenrod;">Logout</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        {% if user.is_authenticated %}
+    <header class="masthead"  style="background: url('{% static 'assets/img/m1.jpg' %}') no-repeat center center; background-size: cover;">
+        
+        <div class="container">
+            <div class="masthead-subheading" style="color: rgb(17, 17, 17);">Detection of  !</div>
+            <div class="masthead-heading text-uppercase" style="color: rgb(255, 255, 255);">spinal Stonosis stage classification!</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'model' %}">Model</a>
+        </div>
+    </header>
+{% else %}
+    <header class="masthead" style="background: url(https://socalbrainspine.com/wp-content/uploads/2024/06/Spinal-stenosis-1.png) ; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="masthead-subheading" style="color: rgb(17, 17, 17);">Welcome To Our Newuser!</div>
+            <div class="masthead-heading text-uppercase" style="color: rgb(17, 17, 17);">Kindly Register here!</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'users-register' %}">Register</a>
+            <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'login' %}">Login</a>
+        </div>
+    </header>
+{% endif %}
+      {% if user.is_authenticated %}
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Spinal Stenosis Stages</h2>
+                    <h3 class="section-subheading text-muted">Classifying the progression of spinal stenosis.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <img src="data:image/jpeg;base64,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" class="img-fluid" >
+                        </span>
+                        <h4 class="my-3">Normal</h4>
+                        <p class="text-muted">In a normal spine, there is no narrowing of the spinal canal, and the spinal cord or nerves function without restriction or discomfort.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn9Su5yMCLB5UCIwKWXuqql2deXqD-t8ZWDQ&s" class="img-fluid" >
+
+                        </span>
+                        <h4 class="my-3">Mild Stenosis</h4>
+                        <p class="text-muted">In mild cases, the spinal canal begins to narrow, leading to occasional discomfort or pain, but daily activities remain mostly unaffected.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlOdrZVhBdEwflr6MLQf3XbvskRcTozsVsWg&s
+                            " class="img-fluid" >
+
+                        </span>
+                        <h4 class="my-3">Moderate Stenosis</h4>
+                        <p class="text-muted">Moderate stenosis involves significant narrowing, resulting in more frequent pain, numbness, and difficulty walking or standing for extended periods.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-4x">
+                            <img src="data:image/jpeg;base64,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" class="img-fluid" >
+
+                        </span>
+                        <h4 class="my-3">Severe Stenosis</h4>
+                        <p class="text-muted">Severe stenosis causes intense pain and discomfort, often leading to significant disability, requiring surgery or advanced treatments to alleviate symptoms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Benefits of Understanding and Managing Spinal Stenosis</h2>
+                    <h3 class="section-subheading text-muted">How awareness and proactive management can improve quality of life.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><br><br>
+                            <i class="fas fa-stethoscope fa-3x"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Early Diagnosis</h4>
+                                <h4 class="subheading">Proactive Treatment</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Recognizing the early signs of spinal stenosis allows for prompt medical attention. Early diagnosis can lead to effective management strategies, potentially slowing the progression of the condition and reducing the need for more invasive treatments.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><br><br>
+                            <i class="fas fa-capsules fa-3x"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Pain Management</h4>
+                                <h4 class="subheading">Improved Comfort</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Effective pain management strategies, such as physical therapy and medications, can help alleviate discomfort associated with spinal stenosis. By addressing pain, individuals can maintain a higher quality of life and stay active longer.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><br><br>
+                            <i class="fas fa-walking fa-3x"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Mobility Preservation</h4>
+                                <h4 class="subheading">Enhanced Daily Function</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Through targeted treatments and lifestyle adjustments, individuals can preserve their mobility and independence. Maintaining mobility helps with performing daily tasks and improves overall well-being.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><br><br>
+                            <i class="fas fa-shield-alt fa-3x"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Preventing Complications</h4>
+                                <h4 class="subheading">Long-Term Health Benefits</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">By addressing spinal stenosis early and managing it effectively, individuals can prevent severe complications such as permanent nerve damage or severe disability. This proactive approach leads to better long-term health outcomes and reduced healthcare costs.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                Stay
+                                <br />
+                                Informed,
+                                <br />
+                                Stay Healthy!
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+                <!-- Portfolio Grid-->
+                <section class="page-section bg-light" id="spinal-stenosis">
+                    <div class="container">
+                        <div class="text-center">
+                            <h2 class="section-heading text-uppercase">Spinal Stenosis Stage Classification</h2>
+                            <h3 class="section-subheading text-muted">Understanding the stages of spinal stenosis for better diagnosis and treatment.</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Why Section -->
+                                <div class="content-item shadow-sm">
+                                    <div class="content-icon bg-primary text-white">
+                                        <i class="fas fa-question"></i>
+                                    </div>
+                                    <h4 class="content-heading">Why</h4>
+                                    <p>Spinal stenosis occurs when spaces within the spine narrow, exerting pressure on the nerves. Stage classification is vital for assessing the severity, planning treatment, and monitoring progression.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- What Section -->
+                                <div class="content-item shadow-sm">
+                                    <div class="content-icon bg-success text-white">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <h4 class="content-heading">What</h4>
+                                    <ul>
+                                        <li><strong>Mild:</strong> Minor pain, intermittent numbness. <em>Treatment:</em> Physical therapy.</li>
+                                        <li><strong>Moderate:</strong> Persistent pain, difficulty walking. <em>Treatment:</em> Pain management, injections.</li>
+                                        <li><strong>Severe:</strong> Significant weakness, functional loss. <em>Treatment:</em> Surgery often required.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- When Section -->
+                                <div class="content-item shadow-sm">
+                                    <div class="content-icon bg-warning text-white">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <h4 class="content-heading">When</h4>
+                                    <p>Classification is needed at initial diagnosis, during follow-up assessments, with symptom changes, and before surgery to plan the appropriate treatment approach.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <style>
+                    .page-section {
+            padding: 60px 0;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #333;
+        }
+        
+        .section-subheading {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #6c757d;
+        }
+        
+        .content-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-icon {
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .bg-primary {
+            background-color: #007bff;
+        }
+        
+        .bg-success {
+            background-color: #28a745;
+        }
+        
+        .bg-warning {
+            background-color: #ffc107;
+        }
+        
+        .content-heading {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .content-item p, .content-item ul {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .content-item ul {
+            padding-left: 20px;
+            text-align: left;
+        }
+        
+        .content-item ul li {
+            margin-bottom: 10px;
+        }
+        
+        .content-item ul li strong {
+            color: #333;
+        }
+        
+        @media (max-width: 767px) {
+            .content-item {
+                margin-bottom: 30px;
+            }
+        }
+        
+                </style>
+        
+        <!-- Team-->
+       
+        {% endif %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{%static 'js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

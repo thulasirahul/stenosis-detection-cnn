@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ predict | upper }} Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 81, 255, 0.3), 0 10px 20px rgba(0, 81, 255, 0.15);
+            background-color: #fdf4e3;
+        }
+        .header-img {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .info-left {
+            flex: 1;
+            max-width: 300px;
+            padding: 10px;
+        }
+        .info-right {
+            flex: 2;
+            padding: 10px;
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            color: #333;
+        }
+        table th {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            background-color: #f9f9f9;
+        }
+        table tr:nth-child(even) td {
+            background-color: #f0f8ff;
+        }
+        table tr:hover td {
+            background-color: #e0ebf6;
+        }
+        .card h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="bg-blue-100 p-6">
+    <nav class="bg-teal-500 p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-3xl font-bold hover:text-teal-200 transition duration-300">Healthcare Data Analysis</a>
+            <ul class="flex space-x-8">
+                <li><a href="/" class="text-white text-lg font-medium hover:bg-teal-600 px-4 py-2 rounded-lg transition duration-300">Home</a></li>
+                <li><a href="{% url 'model' %}" class="text-white text-lg font-medium hover:bg-teal-600 px-4 py-2 rounded-lg transition duration-300">Model</a></li>
+                <li><a href="{% url 'model_db' %}" class="text-white text-lg font-medium hover:bg-teal-600 px-4 py-2 rounded-lg transition duration-300">Database</a></li>
+                <li><a href="{% url 'profile_list' %}" class="text-white text-lg font-medium hover:bg-teal-600 px-4 py-2 rounded-lg transition duration-300">Profile Database</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4">
+        <div class="info-section card">
+            <!-- Left Section: Image -->
+            <div class="info-left">
+                <center><img src="{{ obj.image.url }}" alt="Input Image" style="height: 250px; width: 250px;" class="header-img"></center>
+            </div>
+
+            <!-- Right Section: Description and Details -->
+            <div class="info-right">
+                <h1 class="text-4xl font-bold mb-6">{{ predict | upper }}</h1>
+
+                {% if obj %}
+                <div class="grid gap-6">
+                    {% if predict == 'mild' %}
+                        <h2 class="section-title">Mild Condition</h2>
+                        <table>
+                            <tr><th>Description</th><td>This is the early stage where symptoms are not severe.</td></tr>
+                            <tr><th>Symptoms</th><td>Minor discomfort, slight fatigue, or manageable pain.</td></tr>
+                            <tr><th>Causes</th><td>Mild lifestyle habits, early exposure to triggers.</td></tr>
+                            <tr><th>Prevention</th><td>Regular check-ups, maintaining a balanced lifestyle.</td></tr>
+                            <tr><th>Food Control</th><td>Eating a well-balanced diet, low in fats and sugars.</td></tr>
+                            <tr><th>Physical Activity</th><td>Regular moderate exercise such as walking or swimming.</td></tr>
+                            <tr><th>Related Diseases</th><td>Early signs of related diseases like diabetes or hypertension.</td></tr>
+                            <tr><th>Age Group</th><td>Typically affects people between 30-50 years of age.</td></tr>
+                            <tr><th>Treatment & Medication</th><td>Simple pain relief, basic therapies, or mild medications.</td></tr>
+                        </table>
+
+                    {% elif predict == 'moderate' %}
+                        <h2 class="section-title">Moderate Condition</h2>
+                        <table>
+                            <tr><th>Description</th><td>Symptoms become more pronounced, affecting daily life.</td></tr>
+                            <tr><th>Symptoms</th><td>Noticeable pain, fatigue, and other moderate issues.</td></tr>
+                            <tr><th>Causes</th><td>Lifestyle factors or genetics may contribute to this stage.</td></tr>
+                            <tr><th>Prevention</th><td>Implement preventive measures early, limit exposure to risk factors.</td></tr>
+                            <tr><th>Food Control</th><td>Maintain a diet rich in vegetables, lean proteins, and fibers.</td></tr>
+                            <tr><th>Physical Activity</th><td>Light exercise may be recommended, under medical guidance.</td></tr>
+                            <tr><th>Related Diseases</th><td>May indicate or precede other moderate conditions like pre-diabetes or cardiovascular issues.</td></tr>
+                            <tr><th>Age Group</th><td>Usually affects people between 40-60 years of age.</td></tr>
+                            <tr><th>Treatment & Medication</th><td>Advanced medications, physiotherapy, or specialized treatments may be required.</td></tr>
+                        </table>
+
+                    {% elif predict == 'normal' %}
+                        <h2 class="section-title">Normal Condition</h2>
+                        <table>
+                            <tr><th>Description</th><td>No significant issues detected, the patient is healthy.</td></tr>
+                            <tr><th>Symptoms</th><td>No symptoms, or very mild ones, indicating normal health.</td></tr>
+                            <tr><th>Causes</th><td>Healthy lifestyle, balanced diet, and regular physical activity.</td></tr>
+                            <tr><th>Prevention</th><td>Continue a healthy lifestyle to maintain normal health.</td></tr>
+                            <tr><th>Food Control</th><td>Balanced diet with all essential nutrients.</td></tr>
+                            <tr><th>Physical Activity</th><td>Regular exercise, at least 30 minutes daily.</td></tr>
+                            <tr><th>Related Diseases</th><td>No related diseases expected at this stage.</td></tr>
+                            <tr><th>Age Group</th><td>Suitable for all age groups.</td></tr>
+                            <tr><th>Treatment & Medication</th><td>No medication required, focus on prevention.</td></tr>
+                        </table>
+
+                    {% elif predict == 'severe' %}
+                        <h2 class="section-title">Severe Condition</h2>
+                        <table>
+                            <tr><th>Description</th><td>Critical condition, symptoms are severe and can be life-threatening.</td></tr>
+                            <tr><th>Symptoms</th><td>Intense pain, fatigue, and potentially life-threatening issues.</td></tr>
+                            <tr><th>Causes</th><td>Serious underlying health issues or severe lifestyle factors.</td></tr>
+                            <tr><th>Prevention</th><td>Requires immediate attention, preventative measures to avoid progression.</td></tr>
+                            <tr><th>Food Control</th><td>Strict diet, possibly under medical supervision.</td></tr>
+                            <tr><th>Physical Activity</th><td>May require specialized exercise routines or restrictions.</td></tr>
+                            <tr><th>Related Diseases</th><td>High risk for severe conditions like chronic diseases or complications.</td></tr>
+                            <tr><th>Age Group</th><td>More common in older adults or individuals with chronic conditions.</td></tr>
+                            <tr><th>Treatment & Medication</th><td>Aggressive treatment plans, specialist care required.</td></tr>
+                        </table>
+                    {% endif %}
+                </div>
+                {% else %}
+                <p>No data available for prediction.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

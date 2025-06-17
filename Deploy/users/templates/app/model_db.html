@@ -1,0 +1,149 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records Data</title>
+    <style>
+        /* General page styling */
+        body {
+            background: linear-gradient(to right, #fbc2eb, #a6c0fe); /* Soft gradient background */
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container for the table to center and add padding */
+        .table-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Deep shadow for a floating effect */
+            backdrop-filter: blur(12px); /* Enhanced glassmorphism effect */
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        /* Table hover effect */
+        .table-container:hover table {
+            transform: scale(1.02); /* Slight scale effect on hover */
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+        }
+
+        /* Caption styling */
+        caption {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for text */
+        }
+
+        /* Header row styling */
+        thead tr {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background for header */
+            color: white;
+        }
+
+        /* Table cell and row styling */
+        td, th {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light gray */
+        }
+
+        /* Image cell styling */
+        .image-cell img {
+            max-width: 150px; /* Adjusted width for images */
+            height: auto;
+            border-radius: 10px; /* Rounded corners for images */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for images */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        /* Image hover effect */
+        .image-cell img:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            .image-cell img {
+                max-width: 120px; /* Smaller image size on smaller screens */
+            }
+        }
+
+        /* Button styling */
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: #ffffff;
+            background-color: #ff6f61; /* Coral color */
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #ff3d2e; /* Darker coral shade for hover effect */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        .button:active {
+            background-color: #c62828; /* Even darker shade for active state */
+            transform: scale(1); /* Reset zoom effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <a href="/" class="button">Home</a>
+
+        <table>
+            <caption>Records Database</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Images</th>
+                    <th scope="col">Label</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model in models %}
+                <tr>
+                    <td class="image-cell"><img src="{{ model.image.url }}" alt="Image"></td>
+                    <td>{{ model.label }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock content %}
