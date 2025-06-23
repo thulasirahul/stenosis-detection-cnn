@@ -39,6 +39,22 @@ The final trained model (`spine_stenosis.h5`) achieved 90–95% accuracy across 
 
 ---
 
+## 🖼️ Web App Screenshots
+
+### 🔹 Home Page
+![Home Page](screenshots/home_page.png)
+
+### 🔹 Registration Page
+![Register Page](screenshots/register_page.png)
+
+### 🔹 Uploading Page
+![Upload Page](screenshots/upload_page.png)
+
+### 🔹 Output Page
+![Output Page](screenshots/output_page.png)
+
+---
+
 ## ⚙️ Installation
 
 1. **Clone the repository**
